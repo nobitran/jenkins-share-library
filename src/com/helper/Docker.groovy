@@ -9,9 +9,9 @@ class Docker implements Serializable {
 	}
 
 	def build(String imageName, String creId) {
-		script.echo "Building app ... with $script.BRANCH_NAME";
+		script.echo "Building app ... with $script.BRANCH_NAME"
 		script.withCredentials([
-			usernamePassword(
+			script.usernamePassword(
 				credentialsId: creId,
 				usernameVariable: 'USERNAME',
 				passwordVariable: 'PASSWORD'
