@@ -1,10 +1,10 @@
 #!/usr/bin/env groovy
 
-def call(String imageName) {
+def call(String imageName, String creId) {
     echo "Building app ... with $BRANCH_NAME";
     withCredentials([
         usernamePassword(
-                credentialsId: 'dockerhub',
+                credentialsId: creId,
                 usernameVariable: 'USERNAME',
                 passwordVariable: 'PASSWORD'
         )
