@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call() {
+def call(String imageName) {
     echo "Building app ... with $BRANCH_NAME";
     withCredentials([
         usernamePassword(
@@ -9,8 +9,8 @@ def call() {
                 passwordVariable: 'PASSWORD'
         )
     ]) {
-        sh 'docker build -t nobitran/node-app:1.1 .'
+        sh "docker build -t $imageName ."
         sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
-        sh 'docker push nobitran/node-app:1.1'
+        sh "docker push $imageName"
     }
 }
