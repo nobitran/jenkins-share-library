@@ -1,27 +1,32 @@
-package com.helper;
+#!/usr/bin/env groovy
 
-class Test {
+package com.helper
 
-    // type
-    final VERSION_MAJOR = "major"
-    final VERSION_MINOR = "minor"
-    final VERSION_PATCH = "patch"
+class Version implements Serializable {
+	Version() {
 
-    def increaseVersion(String version, String type) {
-        def (major, minor, patch) = version.split('\\.')
+	}
 
-        switch (type) {
-            case VERSION_MAJOR:
-                major++
-                break;
-            case VERSION_MINOR:
-                minor++
-                break;
-            case VERSION_PATCH:
-                patch++
-                break;
-        }
+	// type
+	def VERSION_MAJOR = "major"
+	def VERSION_MINOR = "minor"
+	def VERSION_PATCH = "patch"
 
-        return [major,minor,patch].join('.')
-    }
+	def increaseVersion(String version, String type) {
+		def (major, minor, patch) = version.split('\\.')
+
+		switch (type) {
+			case VERSION_MAJOR:
+				major++
+				break
+			case VERSION_MINOR:
+				minor++
+				break
+			case VERSION_PATCH:
+				patch++
+				break
+		}
+
+		return [major, minor, patch].join('.')
+	}
 }
