@@ -12,8 +12,11 @@ class Version implements Serializable {
 	def VERSION_MINOR = "minor"
 	def VERSION_PATCH = "patch"
 
-	def increaseVersion(String version, String type=VERSION_MINOR) {
+	def increaseVersion(String version, String type = VERSION_MINOR) {
 		def (major, minor, patch) = version.split('\\.')
+		major = major.toInteger()
+		minor = minor.toInteger()
+		patch = patch.toInteger()
 
 		switch (type) {
 			case VERSION_MAJOR:
