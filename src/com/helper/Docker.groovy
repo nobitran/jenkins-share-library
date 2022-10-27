@@ -17,7 +17,7 @@ class Docker implements Serializable {
 				passwordVariable: 'PASSWORD'
 			)
 		]) {
-			script.sh "docker build -t $imageName:$version -t $imageName:latest . "
+			script.sh "docker build -t $imageName -t $imageName:$version . "
 			script.sh "echo $script.PASSWORD | docker login -u $script.USERNAME --password-stdin"
 			script.sh "docker push $imageName"
 			script.echo "Pushed image to dockerhub"
