@@ -2,6 +2,6 @@
 
 import com.helper.Docker
 
-def call(String imageName, String creId) {
-	return new Docker(this).build(imageName, creId)
+def call(String imageName, String version, String creId) {
+	return new Docker(this).build(imageName, version, creId)
 }
